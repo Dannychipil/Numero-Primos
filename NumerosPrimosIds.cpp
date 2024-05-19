@@ -15,11 +15,37 @@ int VerificarNumeroPrimo(int num) {
 }
 
 int main() {
+    int PrimerNum, SegundoNum;
+    //Almacenar los datos ingresados
+    // Solicitar al usuario ingresar el primer dato del rango
     
-    int numPrimo = 17;
-    if (VerificarNumeroPrimo(numPrimo))
-        printf("El numero es primo\n");
-    else
-        printf("El numero no es primo");
+    do {
+         printf("Ingrese el primer numero del rango (mayor o igual a 0): ");
+         scanf_s("%d", &PrimerNum);
+         if (PrimerNum < 0) {
+           printf("El numero tiene que ser mayor o igual a 0\n");
+         }
+    } while (PrimerNum < 0);
+
+    // Solicitar al usuario ingresar el segundo dato del rango
+    do {
+         printf("Ingrese el final del rango (mayor o igual a %d): ", PrimerNum);
+         scanf_s("%d", &SegundoNum);
+         if (SegundoNum < PrimerNum) {
+            printf("El numero tiene que ser mayor o igual al primer dato\n");
+         }
+    } while (SegundoNum < PrimerNum);
+
+    printf("Los numeros primos en el rango %d, %d son:\n", PrimerNum, SegundoNum);
+
+    // Calcular y mostrar los números primos en el rango especificado
+
+    for (int i = PrimerNum; i <= SegundoNum; ++i) {
+        if (VerificarNumeroPrimo(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+
     return 0;
 }
